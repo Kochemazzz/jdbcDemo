@@ -1,6 +1,6 @@
 package ru.topjava.learn.db;
 
-import org.postgresql.Driver;
+
 import ru.topjava.learn.entiny.Abonent;
 
 import java.sql.*;
@@ -11,7 +11,7 @@ import java.util.Properties;
 public class StartJdbcMain {
     public static void main(String[] args)  {
         try {
-            DriverManager.registerDriver(new Driver());
+            DriverManager.registerDriver((new com.mysql.cj.jdbc.Driver()));
             //Class.forName(org.postgresql.Driver);
         } catch (SQLException e) {
             throw new RuntimeException(e);
