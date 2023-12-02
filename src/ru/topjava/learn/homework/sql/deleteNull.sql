@@ -1,0 +1,1 @@
+DELETE FROM persons_bank WHERE personID = 2

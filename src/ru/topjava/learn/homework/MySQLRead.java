@@ -1,21 +1,24 @@
 package ru.topjava.learn.homework;
+import ru.topjava.learn.homework.entity.DBWorker;
+
 import java.sql.*;
 public class MySQLRead {
     public static void main(String[] args) {
-        read();
+        readTable();
     }
-    public static void read() {
-        String sql = "SELECT * FROM company";
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/clients?", "root", "roor");
-             Statement stmt = connection.createStatement();) {
-             ResultSet resultSet = stmt.executeQuery(sql);
-             while (resultSet.next()){
-                 System.out.print(resultSet.getInt(1) +" ");
-                 System.out.print(resultSet.getString(2) + " ");
-                 System.out.print(resultSet.getInt(3) + " ");
-                 System.out.print(resultSet.getString(4) + " ");
-                 System.out.print(resultSet.getInt(5)+ " ");
-             }
+    public static void readTable() {
+        String sql = "SELECT * FROM persons_bank";
+        DBWorker dbWorker = new DBWorker();
+        try (Connection connection = dbWorker.getConnection(); Statement stmt = connection.createStatement()) {
+            ResultSet resultSet = stmt.executeQuery(sql);
+            while (resultSet.next()) {
+                System.out.print(resultSet.getInt(1) + " ");
+                System.out.print(resultSet.getString(2) + " ");
+                System.out.print(resultSet.getString(3) + " ");
+                System.out.print(resultSet.getDouble(4) + " ");
+                System.out.println();
+
+            }
         } catch (SQLException e) {
             throw new RuntimeException();
         }

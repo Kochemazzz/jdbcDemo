@@ -17,5 +17,4 @@ public class Bank implements Serializable {
     private String name;
     private String surname;
     private double money;
-    private String currency;
 }

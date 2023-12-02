@@ -9,10 +9,11 @@ public class DBWorker {
     private final String HOST = "jdbc:mysql://localhost:3306/clients?";
     private final String USERNAME = "root";
     private final String PASSWORD = "roor";
-    @Getter  Connection connection = null;
+    @Getter  Connection connection ;
     public DBWorker(){
         try {
             connection = DriverManager.getConnection(HOST,USERNAME,PASSWORD);
+            connection.setAutoCommit(false);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
